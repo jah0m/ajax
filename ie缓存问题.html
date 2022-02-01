@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: #b633d4;
+        }
+    </style>
+</head>
+<body>
+    <button>click to send request</button>
+    <div id="result"></div>
+    <script>
+        const btn = document.getElementsByTagName('button')[0];
+        const result = document.getElementById('result');
+
+        btn.addEventListener('click', function (){
+            console.log('test')
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:8000/ie');
+            xhr.send();
+            xhr.onreadystatechange = function (){
+            }
+        })
+    </script>
+</body>
+</html>

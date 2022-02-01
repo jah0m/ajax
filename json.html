@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>json响应</title>
+</head>
+<body>
+    <div id="result">
+
+    </div>
+    <script>
+        window.onkeydown = function (){
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:8000/json-server');
+            xhr.send();
+            //设置响应数据类型
+            xhr.responseType = 'json';
+            xhr.onreadystatechange = function (){
+                if(xhr.readyState === 4){
+                    if (xhr.status >= 200 && xhr.status < 300){
+                        // console.log(xhr.response);
+                        // result.innerHTML = xhr.response;
+                        //手动转化数据
+                        // let data = JSON.parse(xhr.response);
+                        // console.log(data);
+                        // result.innerHTML = data.name;
+                        //自动转化
+                        result.innerHTML = xhr.response.name;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

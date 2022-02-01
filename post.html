@@ -1,0 +1,42 @@
+<html>
+<head>
+    <title>AJAX post request</title>
+    <style>
+        #result{
+            width: 200px;
+            height: 100px;
+            border: solid 1px #b633d4;
+        }
+    </style>
+</head>
+<body>
+<div id="result">
+</div>
+<script>
+    const result = document.getElementById('result');
+    result.addEventListener('mouseover', function (){
+        //console.log('test');
+        //1.创建对象
+        const xhr = new XMLHttpRequest();
+        //2.初始化 设置类型与URL
+        xhr.open('POST','http://localhost:8000/serve');
+        //设置请求头
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('name', '666');
+
+        //3.发送
+        //xhr.send('a=100&b=200&c=300');
+        xhr.send('a:100&b=200');
+        //4.事件绑定
+        xhr.onreadystatechange = function (){
+            if (xhr.readyState === 4){
+                if (xhr.status >= 200 && xhr.status < 300){
+                    result.innerHTML = xhr.response;
+                }
+            }
+        }
+    })
+
+</script>
+</body>
+</html>
