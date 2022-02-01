@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button>ajax</button>
+    <script>
+        const ctn = document.querySelector('button');
+        btn.onclick = function (){
+            fetch('http://localhost:8000/fetch-server',{
+                method:'POST',
+                headers:{
+                    name:'admin'
+                },
+                body:{
+                    a:100
+                }
+            })
+        }
+    </script>
+</body>
+</html>

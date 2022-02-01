@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>axios send ajax</title>
+    <script crossorigin="anonymous" src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <button>get</button>
+    <button>post</button>
+    <button>ajax</button>
+    <script>
+        const btns = document.querySelectorAll('button');
+        //baseURL
+        axios.defaults.baseURL = 'http://localhost:8000';
+
+        btns[0].onclick = function (){
+            //get
+            axios.get('/axios-server',{
+                //url 参数
+                params:{
+                    a:100,
+                    vip:7,
+                },
+                //header
+                headers:{
+                    age:20,
+                    name:'jahom'
+                }
+            }).then(value => {
+                console.log(value);
+            });
+        }
+
+        btns[1].onclick = function (){
+            //post
+            axios.post('/axios-server',{
+                username:'admin',
+                pwd:'admin',
+            }, {
+                //url 参数
+                params:{
+                    a:100,
+                    vip:7,
+                },
+                //请求头参数
+                headers:{
+                    height:180,
+                },
+            }).then(value => {
+                console.log(value);
+            });
+        }
+
+        btns[2].onclick = function (){
+            axios({
+                method:'POST',
+                url: '/axios-server',
+                params:{
+                    vip:10,
+                    level:30,
+                },
+                headers:{
+                    a:100,
+                    b:200
+                },
+                data:{
+                    username:'admin',
+                    password:'admin'
+                }
+            }).then(response=>{
+                console.log(response);
+                console.log(response.status);
+                console.log(response.statusText);
+                console.log(response.headers);
+
+            })
+        }
+    </script>
+</body>
+</html>

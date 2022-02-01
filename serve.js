@@ -34,7 +34,22 @@ app.get('/ie', (request, response)=>{
     response.setHeader('Access-Control-Allow-Origin', '*');
     response.send('hello ie');
 })
+//jQuery 服务
+app.all('/jquery-server', (request, response)=>{
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    // response.send('hello jQuery')
+    const data = {name: 'jahom'};
+    response.send(JSON.stringify(data));
+})
 
+//axios 服务
+app.all('/axios-server', (request, response)=>{
+    response.setHeader('Access-Control-Allow-Origin', '*');
+    response.setHeader('Access-Control-Allow-Headers', '*');
+    // response.send('hello jQuery')
+    const data = {name: 'jahom'};
+    response.send(JSON.stringify(data));
+})
 app.listen(8000,()=>{
     console.log("serve running")
 })
